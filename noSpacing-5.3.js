@@ -6,9 +6,12 @@
 // toCamelCase("The_Stealth_Warrior") // returns "TheStealthWarrior"
 
 function toCamelCase(word){
-    const arr = word.split(" ");
-    for(let i =0; i < arr.length; i=i+2){
-       arr[i] = arr[i].replace(/[^0-9\.]+/g, "");
-    }
-    return arr
-  }
+   word = word.split('');
+   return word.map(function(nW, i){
+     if(nW == '-' || nW == '_'){
+       nW = word[i+1].toUpperCase();
+       word.splice(i+1, 1);
+     }
+     return nW;
+   }).join('');
+ }
